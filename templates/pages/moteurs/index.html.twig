@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moteurs{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% if moteurs.getTotalItemCount() > 0 %}
+            <a href="{{ path('moteur.new') }}" class="btn btn-primary mb-4">Créer un moteur</a>
+            <h1>Moteurs</h1>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Marque</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Ref</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">ImageName</th>
+                        <th scope="col">UpdateAt</th>
+                        <th scope="col">CreatedAt</th>
+                        <th scope="col">Cylinder</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for moteur in moteurs %}
+                        <tr>
+                            <td>{{ moteur.id }}</td>
+                            <td>{{ moteur.marque }}</td>
+                            <td>{{ moteur.prix|number_format(2, ',', ' ') }} €</td>
+                            <td>{{ moteur.ref }}</td>
+                            <td>{{ moteur.description }}</td>
+                            <td>{{ moteur.imageName }}</td>
+                            <td>{{ moteur.updateAt ? moteur.updateAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ moteur.createdAt ? moteur.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ moteur.cylinder }}</td>
+                            <td>
+                                <a href="{{ path('moteur.edit', {'id': moteur.id}) }}" class="btn btn-info">Modifier</a>
+                                <form action="{{ path('moteur.delete', {'id': moteur.id}) }}" method="post" style="display: inline;">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ moteur.id) }}">
+                                    <button type="submit" class="btn btn-warning" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="navigation d-flex justify-content-center mt-4">
+                {{ knp_pagination_render(moteurs) }}
+            </div>
+        {% else %}
+            <h4>Aucun moteur trouvé</h4>
+            <a href="{{ path('moteur.new') }}" class="btn btn-primary">Créer un moteur</a>
+        {% endif %}
+    </div>
+{% endblock %}

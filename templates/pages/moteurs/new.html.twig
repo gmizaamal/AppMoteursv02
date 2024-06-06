@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un nouveau Moteur{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Création d'un nouveau Moteur</h1>
+
+        {% if message is defined %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        {{ form_start(form, {'attr': {'class': 'form'}}) }}
+        <div class="form-group">
+            {{ form_label(form.marque, 'Marque') }}
+            {{ form_widget(form.marque, {'attr': {'class': 'form-control'}, 'empty_data': 'Default Marque'}) }}
+            <div class="form-error">
+                {{ form_errors(form.marque) }}
+            </div>
+        </div>
+        {{ form_row(form.imageFile, {'attr': {'class': 'form-control'}}) }}
+
+        <div class="form-group">
+            {{ form_label(form.prix, 'Prix') }}
+            {{ form_widget(form.prix, {'attr': {'class': 'form-control'}, 'empty_data': '0.00'}) }}
+            <div class="form-error">
+                {{ form_errors(form.prix) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.ref, 'Ref') }}
+            {{ form_widget(form.ref, {'attr': {'class': 'form-control'}, 'empty_data': 'Default Ref'}) }}
+            <div class="form-error">
+                {{ form_errors(form.ref) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.description, 'Description') }}
+            {{ form_widget(form.description, {'attr': {'class': 'form-control'}, 'empty_data': 'Default Description'}) }}
+            <div class="form-error">
+                {{ form_errors(form.description) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.imageName, 'Nom de l\'image') }}
+            {{ form_widget(form.imageName, {'attr': {'class': 'form-control'}, 'empty_data': 'default_image.jpg'}) }}
+            <div class="form-error">
+                {{ form_errors(form.imageName) }}
+            </div>
+        </div>
+
+        {# Ajouter updatedAt avec la date actuelle #}
+        {{ form_row(form.updateAt, {'attr': {'class': 'form-control'}, 'data': {'widget': 'single_text', 'html5': false, 'value': 'now'}}) }}
+
+        <div class="form-group">
+            {{ form_label(form.cylinder, 'Cylinder') }}
+            {{ form_widget(form.cylinder, {'attr': {'class': 'form-control'}, 'empty_data': '4'}) }}
+            <div class="form-error">
+                {{ form_errors(form.cylinder) }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        {{ form_end(form) }}
+
+        <a href="{{ path('moteur.index') }}" class="btn btn-secondary">Retour à la liste paginée</a>
+    </div>
+{% endblock %}

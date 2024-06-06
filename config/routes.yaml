@@ -1,5 +1,38 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+    resource: ../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+
+# config/routes.yaml
+
+default_index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+user_edit:
+    path: /utilisateur/edition/{id}
+    controller: App\Controller\UserController::edit
+
+
+
+app_moteur_index:
+    path: /moteurs
+    controller: 'App\Controller\MoteursController::index'
+    methods: GET
+
+
+connexion_moteur_new:
+    path: /connexion/moteur/new
+    controller: App\Controller\MoteursController::new
+
+contact:
+    path: /contact
+    controller: App\Controller\ContactController::index
+
+app_moteur_show:
+    path: /moteurs/{id}
+    controller: App\Controller\MoteursController::show
+    methods: GET

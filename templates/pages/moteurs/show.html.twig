@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moteurs{% endblock %}
+
+{% block body %}
+    <h1>Moteurs</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ moteur.id }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ moteur.marque }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ moteur.prix }}</td>
+            </tr>
+            <tr>
+                <th>Ref</th>
+                <td>{{ moteur.ref }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ moteur.description }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ moteur.imageName }}</td>
+            </tr>
+            <tr>
+                <th>UpdateAt</th>
+                <td>{{ moteur.updateAt ? moteur.updateAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ moteur.createdAt ? moteur.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Cylinder</th>
+                <td>{{ moteur.cylinder }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_moteurs_index') }}">back to list</a>
+
+    <a href="{{ path('app_moteurs_edit', {'id': moteur.id}) }}">edit</a>
+
+    {{ include('moteurs/_delete_form.html.twig') }}
+{% endblock %}

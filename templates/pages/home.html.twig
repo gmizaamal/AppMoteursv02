@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SymRecipe - Accueil</title>
+    <!-- Vos styles CSS -->
+    <link rel="stylesheet" href="path/to/your/styles.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            {% if app.user %}
+                <li><a href="{{ path('moteur.index') }}">Accueil</a></li>
+                <li><a href="{{ path('user.edit', {id: app.user.id}) }}">Modifier le profil</a></li>
+                <li><a href="{{ path('user.edit.password', {id: app.user.id}) }}">Modifier le mot de passe</a></li>
+                <li><a href="{{ path('security.logout') }}">Déconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('security.login') }}">Connexion</a></li>
+                <li><a href="{{ path('security.registration') }}">Inscription</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% block body %}
+    <div class="container mt-4">
+        <div class="jumbotron">
+            <h1 class="display-4">Bienvenue sur Symmoteur</h1>
+            <p class="lead">SymRecipe est une application qui va te permettre de créer des recettes à base d'ingrédients que tu auras toi-même créer. Tu pourras partager tes recettes à la communauté du site, ou bien les garder en privées.</p>
+            <hr class="my-4">
+            <p>Pour commencer, rendez-vous sur la page d'inscription pour utiliser l'application.</p>
+            <a class="btn btn-primary btn-lgz" href="{{ path('security.registration') }}" role="button">Inscription</a>
+        </div>
+
+        <div class="recipes">
+            <h2 class="mt-4">Recettes de la communauté</h2>
+            <div class="d-flex justify-content-between">
+                {% for moteur in moteurs %}
+                    <div class="card border-primary mb-3" style="max-width: 20rem;">
+                        <div class="card-header">Recette n°{{ moteur.id }}</div>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ path('moteur.show', {id: moteur.id}) }}">{{ moteur.marque }}</a>
+                            </h4>
+                            <p class="card-text">{{ moteur.description|slice(0, 100) ~ '...' }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <!-- Vos scripts JavaScript -->
+    <script src="path/to/your/scripts.js"></script>
+</body>
+
+</html>

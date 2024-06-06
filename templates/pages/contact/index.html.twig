@@ -1,0 +1,258 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    SymMoteur - Contact
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+{% endblock %}
+
+{% block body %}
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"indexntact></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__widget">
+            <a href="#"><i class="fa fa-cart-plus"></i></a>
+            <a href="#" class="search-switch"><i class="fa fa-search"></i></a>
+            <a href="#" class="primary-btn">Add Car</a>
+        </div>
+        <div class="offcanvas__logo">
+            <a href="{{ path('app_index') }}"><img src="{{ asset('img/logo.png') }}" alt=""></a>
+        </div>
+        <nav class="offcanvas__menu mobile-menu">
+            <ul>
+                <li class="active"><a href="{{ path('app_index') }}">Home</a></li>
+                <li><a href="{{ path('app_car') }}">Cars</a></li>
+                <li><a href="{{ path('app_blog') }}">Blog</a></li>
+                <li><a href="#">Pages</a>
+                    <ul class="dropdown">
+                        <li><a href="{{ path('app_about') }}">About Us</a></li>
+                        <li><a href="{{ path('app_car_details') }}">Car Details</a></li>
+                        <li><a href="{{ path('app_blog_details') }}">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path('app_about') }}">About</a></li>
+                <li><a href="{{ path('contact.index') }}">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <ul class="offcanvas__widget__add">
+            <li><i class="fa fa-clock-o"></i> Week day: 08:00 am to 18:00 pm</li>
+            <li><i class="fa fa-envelope-o"></i> Info.colorlib@gmail.com</li>
+        </ul>
+        <div class="offcanvas__phone__num">
+            <i class="fa fa-phone"></i>
+            <span>(+12) 345 678 910</span>
+        </div>
+        <div class="offcanvas__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-google"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <ul class="header__top__widget">
+                            <li><i class="fa fa-clock-o"></i> Week day: 08:00 am to 18:00 pm</li>
+                            <li><i class="fa fa-envelope-o"></i> Info.colorlib@gmail.com</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="header__top__right">
+                            <div class="header__top__phone">
+                                <i class="fa fa-phone"></i>
+                                <span>(+12) 345 678 910</span>
+                            </div>
+                            <div class="header__top__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-google"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success mt-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div> <!-- This closes the container div -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="{{ path('app_index') }}"><img src="{{ asset('img/logo.png') }}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="header__nav">
+                        <nav class="header__menu">
+                            <ul>
+                                <li><a href="{{ path('app_index') }}">Home</a></li>
+                                <li><a href="{{ path('app_car') }}">Moteur</a></li>
+                                <li><a href="{{ path('app_blog') }}">Blog</a></li>
+                                <li><a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="{{ path('app_about') }}">About Us</a></li>
+                                        <li><a href="{{ path('app_car_details') }}">Car Details</a></li>
+                                        <li><a href="{{ path('app_blog_details') }}">Blog Details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{{ path('app_about') }}">About</a></li>
+                                <li class="active"><a href="{{ path('contact.index') }}">Contact</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header__nav__widget">
+                            <div class="header__nav__widget__btn">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#" class="search-switch"><i class="fa fa-search"></i></a>
+                            </div>
+                            <a href="#" class="primary-btn">Add Moteur</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <span class="fa fa-bars"></span>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option set-bg" data-setbg="{{ asset('img/breadcrumb-bg.jpg') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Contact Us</h2>
+                        <div class="breadcrumb__links">
+                            <a href="{{ path('app_index') }}"><i class="fa fa-home"></i> Home</a>
+                            <span>Contact Us</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="contact__text">
+                        <div class="section-title">
+                            <h2>Let’s Work Together</h2>
+                            <p>To make requests for further information, contact us via our social channels.</p>
+                        </div>
+                        <ul>
+                            <li><span>Weekday</span> 08:00 am to 18:00 pm</li>
+                            <li><span>Saturday:</span> 10:00 am to 16:00 pm</li>
+                            <li><span>Sunday:</span> Closed</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="contact__form">
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                {{ form_row(form.fullName, {'attr': {'placeholder': 'Name'}}) }}
+                            </div>
+                            <div class="col-lg-6">
+                                {{ form_row(form.email, {'attr': {'placeholder': 'Email'}}) }}
+                            </div>
+                        </div>
+                        {{ form_row(form.subject, {'attr': {'placeholder': 'Subject'}}) }}
+                        {{ form_row(form.message, {'attr': {'placeholder': 'Your Question'}}) }}
+                        <button type="submit" class="site-btn">Submit Now</button>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Contact Address Begin -->
+    <div class="contact-address">
+        <div class="container">
+            <div class="contact__address__text">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="contact__address__item">
+                            <h4>California Showroom</h4>
+                            <p>625 Gloria Union, California, United Stated</p>
+                            <p>Info.colorlib@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="contact__address__item">
+                            <h4>New York Showroom</h4>
+                            <p>8235 South Ave. Jamestown, New York</p>
+                            <p>Info.colorlib@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="contact__address__item">
+                            <h4>Florida Showroom</h4>
+                            <p>497 Beaver Ridge St. Daytona Beach, Florida</p>
+                            <p>Info.colorlib@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Address End -->
+
+    <!-- Map Begin -->
+    <div class="map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127161.54828449802!2d-0.510672006810566!3d38.35884797797892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd62369ed47255cb%3A0x7da96f5db9b0e789!2sAlicante%2C%20Spain!5e0!3m2!1sen!2suk!4v1582258549654!5m2!1sen!2suk"
+            height="450" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+
+    {% block javascripts %}
+    <!-- Js Plugins -->
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/mixitup.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}
+    <!-- Map End -->
+{% endblock %}
